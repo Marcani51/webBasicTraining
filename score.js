@@ -1,7 +1,13 @@
-const p1Button = document.querySelector('#player1Button');
-const p2Button = document.querySelector('#player2Button');
-const piDisplay1 = document.querySelector('#p1Display');
-const piDisplay2 = document.querySelector('#p2Display');
+const p1={
+  score:0,
+  button: document.querySelector('#player1Button'),
+  display:document.querySelector('#p1Display')
+}
+const p2={
+  score:0,
+  button: document.querySelector('#player2Button'),
+  display:document.querySelector('#p2Display')
+}
 const resetButton = document.querySelector('#resetButton');
 const winningScoreAlert=document.querySelector('#playto');
 let p1Score=0;
@@ -10,38 +16,28 @@ let winnerScore=3;
 let gameOver=false;
 
 ////////////////////////EXECUTION/////////
-p1Button.addEventListener('click',function(){
+
+function updateScore(player,openent){
   if(!gameOver)
   {
-    p1Score +=1;
-    if(p1Score===winnerScore){
+    player.score +=1;
+    if(player.score===winnerScore){
       gameOver=true;
-      piDisplay1.classList.add('winner');
-      piDisplay2.classList.add('loser');
-      p1Button.disabled=true;
-      p2Button.disabled=true;
-
+      player.display.classList.add('winner');
+      openent.display.classList.add('loser');
+      player.button.disabled=true;
+      openent.button.disabled=true;
     }
-  
-    piDisplay1.textContent= p1Score;
+    player.display.textContent= player.score;
   }
-  
+}
+
+p1.button.addEventListener('click',function(){
+  updateScore(p1,p2);
 })
 
-p2Button.addEventListener('click',function(){
-  if(!gameOver){
-    p2Score +=1;
-    if(p2Score===winnerScore){
-      gameOver=true;
-      piDisplay2.classList.add('winner');
-      piDisplay1.classList.add('loser');
-      p1Button.disabled=true;
-      p2Button.disabled=true;
-
-    }
-    
-  piDisplay2.textContent= p2Score;
-  }
+p2.button.addEventListener('click',function(){
+  updateScore(p2,p1);
 })
 
 resetButton.addEventListener('click', reset)
@@ -53,14 +49,14 @@ winningScoreAlert.addEventListener('change',function(){
 })
 
 function reset(){
-  p1Score=0;
-  p2Score=0;
-  gameOver=false;
-  piDisplay1.textContent=p1Score;
-  piDisplay2.textContent=p2Score;
-  piDisplay1.classList.remove('winner','loser');
-  piDisplay2.classList.remove('winner','loser');
-  p1Button.disabled=false;
-  p2Button.disabled=false;
+
+  for(let p of [p1,p2])
+  {
+    p.score=0;
+    gameOver=false;
+    p.display.textContent=p.score;
+    p.display.classList.remove('winner','loser');
+    p.button.disabled=false;
+  }
 
 }
