@@ -8,12 +8,16 @@
     <link rel="stylesheet" href="app.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <style>
+        body {
+            transition: 1s background-color;
+        }
         .winner{
             color: green;
         }
         .loser{
             color:red;
         }
+        
     </style>
 </head>
 
@@ -34,7 +38,7 @@
                         </span>
                     </button>
                     </header>
-                    <div class="card-content">
+                    <div id="subtitle-content" class="card-content">
                     <div class="content">
                         <h1 class="title is-1"><span id="p1Display">0</span> to <span id="p2Display">0</span></h1>
                         <p class="subtitle">Use the button bellow to keep score</p>

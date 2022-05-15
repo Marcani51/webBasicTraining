@@ -59,8 +59,6 @@ const hen ={
       console.log('EGG');
   }
 }
-
-
 makeBetweenFunc(5,10);
 
 // function isBetween(num){

@@ -48,6 +48,12 @@ winningScoreAlert.addEventListener('change',function(){
   reset();
 })
 
+const delayedColorChange=(newColor, delay)=>{
+  setTimeout(()=>{
+    //document.body.style.backgroundColor=newColor;
+    document.querySelector('#subtitle-content').style.backgroundColor=newColor;
+  },delay)
+}
 function reset(){
 
   for(let p of [p1,p2])
@@ -60,3 +66,29 @@ function reset(){
   }
 
 }
+delayedColorChange('olive',3000);
+delayedColorChange('teal',1000);
+
+////JS API COURSE
+
+const fakeRequest=(url)=>{
+  new Promise((reseolve,reject)=>{
+    const rand=Math.random();
+    setTimeout(()=>{
+      if(rand <0.7){
+        reseolve('your fake data here');
+      }
+      reject('error');
+    },1000)
+  })
+}
+
+fakeRequest('/dogs/1')
+  .then((data)=>{
+    console.log("succes with request");
+    console.log("your data is: ",data);
+})
+  .catch((err)=>{
+    console.log("Oh no error",err);
+  })
+
