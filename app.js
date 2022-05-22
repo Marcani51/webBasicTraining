@@ -1,8 +1,5 @@
-// for(let i=1; i<=10;i++)
-// {
-//   console.log(i);
-// }
-
+const math = require('./math');
+const cats = require('./shelter');
 function callTwice(func){
   func();
   func();
@@ -65,3 +62,8 @@ makeBetweenFunc(5,10);
 //   return num >=50 && num <=100;
 // }
 callTwice(rollDice);
+///////////// module exports//////////////
+
+console.log(math.square(9));
+console.log(math.add(9,9));
+console.log(cats);

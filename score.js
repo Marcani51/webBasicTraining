@@ -1,3 +1,4 @@
+
 const p1={
   score:0,
   button: document.querySelector('#player1Button'),
@@ -155,21 +156,21 @@ function reset(){
 /////////////////////////////////////////////////////////////////////////////////
 
 //////////// PAKAI AXIOS UNTUK REQUEST API//////////////////////////////////////
-axios.get("https://swapi.dev/api/people/1/")
-.then((res)=>{
-  console.log("RESPONSE", res);
-})
-.catch((er)=>{
-  console.log("error",er);
-})
-//////// AXIOS DENGAN AWAIT /////////////
-const getAllPeopple= async(id)=>{
-  try{
-  const res = await axios.get(`https://swapi.dev/api/people/${id}/`);
-  console.log(res.data);
-  }catch(er){
-    console.log('error',er);
-  }
-};
-getAllPeopple(5);
+// axios.get("https://swapi.dev/api/people/1/")
+// .then((res)=>{
+//   console.log("RESPONSE", res);
+// })
+// .catch((er)=>{
+//   console.log("error",er);
+// })
+//////////////// AXIOS DENGAN AWAIT /////////////
+// const getAllPeopple= async(id)=>{
+//   try{
+//   const res = await axios.get(`https://swapi.dev/api/people/${id}/`);
+//   console.log(res.data);
+//   }catch(er){
+//     console.log('error',er);
+//   }
+// };
+// getAllPeopple(5);
 /////////////////////////////////////////////////////
